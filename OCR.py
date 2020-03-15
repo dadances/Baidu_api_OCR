@@ -2,19 +2,12 @@ from aip import AipOcr
 
 model=1
 
-config={
-    'appId': '17897236',
-    'apiKey': 'pDmRkoOlqUCQliqxm6wwp4sr',
-    'secretKey': 'q24kqnZA0dZ1GvnaSAXBc09offm7GjfD',
-}
-
-client = AipOcr(**config)
-
-def get_file_bit(file):
-    fp = open(file, 'rb')
+def get_file_bit(file_path):
+    fp = open(file_path, 'rb')
     return fp.read()
 
-def img_to_str(image_path):
+def img_to_str(image_path,APP_ID,API_KEY,SECRET_KEY):
+    client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
     image_bit=get_file_bit(image_path)
     global model
     if model==1:
