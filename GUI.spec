@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['GUI.py'],
-             pathex=['C:\\Users\\cgl\\Desktop\\MyLab\\Baidu_OCR'],
+             pathex=['C:\\Users\\cgl\\Desktop\\MyLab\\Baidu_OCR\\Baidu_api_OCR'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -19,18 +19,14 @@ pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
           [],
-          exclude_binaries=True,
           name='GUI',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
+          runtime_tmpdir=None,
           console=False )
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               strip=False,
-               upx=True,
-               name='GUI')
